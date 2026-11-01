@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>ゆいつむ工房｜家族の車中泊・旅行・暮らしを彩るWebアプリ＆絵本スタジオ</title>
+  <meta name="description" content="ゆいつむ工房の公式サイト。車中泊AIしおりアプリ『VANTRIP』、旅行プランナー『TRIPNOTE』、スクラップブック作成『TRIP LOGUE』『CLIP NOTE』、創作絵本『ころまる』や車中泊DIY・旅行記noteを公開しています。">
+  <meta name="keywords" content="ゆいつむ工房,VANTRIP,ヴァントリップ,TRIPNOTE,トリップノート,TRIP LOGUE,トリップローグ,CLIP NOTE,クリップノート,ころまる,車中泊,旅行しおり,家族旅行">
+  <link rel="canonical" href="https://yuitumukoubou.vercel.app/">
+
+  <!-- アイコン・スマホホーム画面保存設定 -->
+  <link rel="icon" type="image/png" href="https://vantrip-gamma.vercel.app/icon.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://vantrip-gamma.vercel.app/icon.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="ゆいつむ工房">
+  <meta name="theme-color" content="#faf7f2">
+
+  <!-- Google Analytics 4 (VANTRIP共通ID) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-T4SWZF237Y"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-T4SWZF237Y');
+  </script>
+
+  <!-- OGP設定 (SNS・LINEシェア時のカード表示) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ゆいつむ工房｜車中泊・旅行・暮らしのWebアプリ＆絵本スタジオ">
+  <meta property="og:description" content="車中泊AIプランナー『VANTRIP』や動くアルバム『TRIP LOGUE』、絵本『ころまる』、リアルな車中泊体験記noteをお届けする公式ポータルサイト。">
+  <meta property="og:url" content="https://yuitumukoubou.vercel.app/">
+  <meta property="og:image" content="https://vantrip-gamma.vercel.app/vantrip-ogp.png">
+  <meta property="og:site_name" content="ゆいつむ工房">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ゆいつむ工房｜車中泊・旅行・暮らしのWebアプリ＆絵本スタジオ">
+  <meta name="twitter:description" content="家族のお出かけと暮らしをもっと楽しく便利にするハンドメイドWebアプリ＆絵本スタジオ。">
+  <meta name="twitter:image" content="https://vantrip-gamma.vercel.app/vantrip-ogp.png">
+
+  <!-- 🔍 本格SEO対策：Google・Safari検索エンジン向け構造化データ (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://yuitumukoubou.vercel.app/#organization",
+        "name": "ゆいつむ工房",
+        "alternateName": ["Yuitumu Koubou", "ゆいつむアプリ工房"],
+        "url": "https://yuitumukoubou.vercel.app/",
+        "logo": "https://vantrip-gamma.vercel.app/icon.png",
+        "description": "家族の暮らし・車中泊・旅行をもっと楽しく便利にするWebアプリ開発＆創作絵本スタジオ",
+        "sameAs": [
+          "https://note.com/yuitumu_app",
+          "https://www.instagram.com/yuitumu.app/",
+          "https://www.instagram.com/yuitumkoubou/",
+          "https://lit.link/yuitumukoubou",
+          "https://yuitumukoubou.my.canva.site/"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://yuitumukoubou.vercel.app/#website",
+        "url": "https://yuitumukoubou.vercel.app/",
+        "name": "ゆいつむ工房 公式サイト",
+        "publisher": { "@id": "https://yuitumukoubou.vercel.app/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "VANTRIP（ヴァントリップ）",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Web",
+        "url": "https://vantrip-gamma.vercel.app/",
+        "description": "出発地を選ぶだけで道の駅・RVパーク・日帰り温泉・観光ルートを自動作成する車中泊スマートしおり＆AIツアープランナー",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "TRIPNOTE（トリップノート）",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Web",
+        "url": "https://tripnote-gold.vercel.app/",
+        "description": "ホテル泊・新幹線・飛行機・レンタカー旅行のルートとしおりを自動作成するAIツアープランナー",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "TRIP LOGUE（トリップローグ）",
+        "applicationCategory": "PhotographyApplication",
+        "operatingSystem": "Web",
+        "url": "https://trip-logue.vercel.app/",
+        "description": "旅と車中泊の思い出メモや写真・10秒動画から、おしゃれなスクラップブック＆スライドショーを作成するWebアプリ",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "CLIP NOTE（クリップノート）",
+        "applicationCategory": "LifestyleApplication",
+        "operatingSystem": "Web",
+        "url": "https://clip-note-hazel.vercel.app/",
+        "description": "カフェ巡り・読書・子どもの行事・推し活など日常の記録をおしゃれなスクラップノート＆スライドショーにするWebアプリ",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "JPY" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Tailwind CSS & Google Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;0,700;1,600&family=Kiwi+Maru:wght@400;500&family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Noto+Sans+JP:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-linen: #faf7f2;
+      --text-main: #2c2520;
+      --accent-terracotta: #b0724e;
+      --accent-sage: #385a43;
+    }
+    body {
+      font-family: 'Noto Sans JP', 'M PLUS Rounded 1c', sans-serif;
+      background-color: var(--bg-linen);
+      color: var(--text-main);
+      -webkit-tap-highlight-color: transparent;
+    }
+    .font-serif-jp { font-family: 'Kiwi Maru', serif; }
+    .font-en { font-family: 'Plus Jakarta Sans', sans-serif; }
+    .font-editorial { font-family: 'Cormorant Garamond', serif; }
+
+    /* アプリアイコンの美しい丸角（iOSのアプリアイコン風） */
+    .ios-app-icon {
+      border-radius: 22.5%;
+      box-shadow: 0 6px 16px rgba(44, 37, 32, 0.12), 0 0 0 1px rgba(44, 37, 32, 0.06);
+    }
+
+    /* カードのふんわり浮き上がるホバーアニメーション */
+    .studio-card {
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .studio-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 30px -8px rgba(44, 37, 32, 0.12);
+    }
+    .studio-card:active {
+      transform: scale(0.985);
+    }
+
+    /* トースト通知 */
+    #toast {
+      visibility: hidden;
+      min-width: 250px;
+      max-width: 90vw;
+      background-color: #2c2520;
+      color: #faf7f2;
+      text-align: center;
+      border-radius: 20px;
+      padding: 14px 20px;
+      position: fixed;
+      z-index: 200;
+      left: 50%;
+      bottom: 90px;
+      transform: translateX(-50%);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.5;
+      box-shadow: 0 10px 30px rgba(44, 37, 32, 0.35);
+      opacity: 0;
+      transition: all 0.25s ease;
+    }
+    #toast.show {
+      visibility: visible;
+      opacity: 1;
+      bottom: 100px;
+    }
+
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="min-h-screen pb-28 selection:bg-amber-200/60">
+
+  <!-- ⚠️ Instagram・LINE等のアプリ内ブラウザから開かれた際の優しい案内バー -->
+  <div id="inAppBrowserNotice" class="hidden bg-[#385a43] text-amber-50 px-3.5 py-2 text-center text-[11px] font-bold sticky top-0 z-[70] shadow-sm">
+    💡 Instagram等のアプリ内からご覧の方へ：右上の「<b>…</b>」や「<b>↗</b>」から<b>「ブラウザで開く」</b>を選ぶと、しおりの保存が消えず快適に使えます✨
+  </div>
+
+  <div id="toast"></div>
+
+  <!-- 🌿 上部ヘッダー（ナチュラル＆マガジン風） -->
+  <header class="bg-[#faf7f2]/90 backdrop-blur-md sticky top-0 z-50 border-b border-[#e8dfd3]">
+    <div class="max-w-3xl mx-auto px-4 py-2.5 flex items-center justify-between gap-2">
+      <a href="#top" class="flex items-center gap-2.5 group">
+        <div class="w-9 h-9 rounded-2xl bg-gradient-to-br from-[#385a43] to-[#243b2b] text-white flex items-center justify-center text-lg shadow-xs group-hover:scale-105 transition">
+          🚐
+        </div>
+        <div>
+          <span class="font-en text-[9px] font-bold tracking-[0.2em] text-[#8c6b53] uppercase block leading-none">LIFESTYLE & AI STUDIO</span>
+          <span class="font-serif-jp font-bold text-base sm:text-lg text-[#2c2520] tracking-tight leading-tight block mt-0.5">ゆいつむ工房</span>
+        </div>
+      </a>
+
+      <div class="flex items-center gap-1.5">
+        <button onclick="showAddToHomeGuide()" class="bg-[#efe9df] hover:bg-[#e4dacb] active:scale-95 text-[#4a3b32] border border-[#dcd0c0] px-3 py-1.5 rounded-full text-[11px] font-bold transition flex items-center gap-1 shadow-2xs">
+          <span>📱</span><span class="hidden sm:inline">ホーム画面に</span><span>保存</span>
+        </button>
+        <a href="https://www.instagram.com/yuitumu.app/" target="_blank" rel="noopener noreferrer" class="bg-gradient-to-tr from-amber-500 via-rose-500 to-purple-600 text-white px-3 py-1.5 rounded-full text-[11px] font-bold shadow-xs hover:opacity-95 active:scale-95 transition flex items-center gap-1">
+          <span>📷</span><span>Instagram</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="max-w-3xl mx-auto px-4 pt-4 sm:pt-6 space-y-10 sm:space-y-12">
+
+    <!-- ========================================== -->
+    <!-- 🌟 1. ヒーローエリア（看板ビジュアル ＆ プロフィール） -->
+    <!-- ========================================== -->
+    <section class="space-y-4">
+      <div class="relative rounded-3xl overflow-hidden shadow-md border border-[#e5dacb] bg-white">
+        
+        <!-- 🖼️ メイン看板画像（GitHubに hero.jpg を置くと自動でそちらが表示され、無い場合はおしゃれなダミーが表示されます） -->
+        <div class="relative w-full aspect-[16/9] sm:aspect-[21/9] bg-gradient-to-br from-[#e9dfd1] via-[#f5efe6] to-[#d8e2dc] overflow-hidden flex items-center justify-center">
+          <img src="hero.jpg" alt="ゆいつむ工房 メインビジュアル" class="w-full h-full object-cover" onerror="this.style.display='none'; document.getElementById('heroDummyArt').classList.remove('hidden');">
+          
+          <!-- ダミービジュアル（hero.jpg アップロード前でも素敵に見えるカフェ＆マガジン風デザイン） -->
+          <div id="heroDummyArt" class="hidden inset-0 w-full h-full flex flex-col items-center justify-center p-6 text-center relative overflow-hidden bg-gradient-to-br from-[#f3ebe1] via-[#faf6f0] to-[#e3ece6]">
+            <!-- 背景の優しいボタニカル＆太陽光の装飾 -->
+            <div class="absolute -top-12 -right-12 w-48 h-48 rounded-full bg-amber-200/35 blur-2xl pointer-events-none"></div>
+            <div class="absolute -bottom-12 -left-12 w-48 h-48 rounded-full bg-emerald-200/30 blur-2xl pointer-events-none"></div>
+            
+            <span class="font-editorial italic text-xs sm:text-sm tracking-[0.25em] text-[#8c6b53] mb-1">Weekend Vanlife, Travel & Family Memories</span>
+            <h1 class="font-serif-jp text-lg sm:text-2xl font-bold text-[#2c2520] leading-snug max-w-lg">
+              家族の「どこ行く？」「楽しかったね！」を、<br class="hidden sm:inline">もっと身軽に、もっと特別に。
+            </h1>
+            <div class="mt-3 flex items-center gap-2 text-lg sm:text-xl bg-white/80 backdrop-blur-xs px-4 py-1.5 rounded-full border border-[#dfd3c3] shadow-2xs">
+              <span>🚐</span><span>✈️</span><span>📖</span><span>☕</span><span>🐶</span>
+            </div>
+            <span class="absolute bottom-2 right-3 text-[9px] text-stone-400 font-mono">※ hero.jpg を追加するとここに表示されます</span>
+          </div>
+        </div>
+
+        <!-- 開発者プロフィール・ストーリーバー -->
+        <div class="p-4 sm:p-5 bg-white flex flex-col sm:flex-row sm:items-center justify-between gap-3.5">
+          <div class="flex items-start sm:items-center gap-3.5">
+            <img src="profile.png" alt="ゆいつむ工房" class="w-12 h-12 sm:w-14 sm:h-14 rounded-full object-cover border-2 border-[#e5dacb] shrink-0 bg-[#f5efe6]" onerror="this.onerror=null; this.src='https://vantrip-gamma.vercel.app/icon.png';">
+            <div class="space-y-1">
+              <div class="flex flex-wrap items-center gap-1.5">
+                <span class="font-bold text-sm sm:text-base text-[#2c2520]">ゆいつむ工房</span>
+                <span class="text-[10px] bg-[#efe9df] text-[#6e5644] px-2 py-0.5 rounded-full font-bold">2児のママ・個人開発スタジオ</span>
+              </div>
+              <p class="text-xs text-stone-600 leading-relaxed">
+                週末の家族での車中泊にドハマりし、「旅行の下調べや思い出整理をもっとラクに楽しくしたい！」という思いから、自分で使いたいWebアプリや絵本を作って公開しています🚗✨
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================== -->
+      <!-- ⚡ 2. アプリアイコン付き「1秒ショートカット」カード群 -->
+      <!-- ========================================== -->
+      <div class="space-y-2 pt-1">
+        <div class="flex items-center justify-between px-1">
+          <span class="text-[11px] font-bold text-[#786454] flex items-center gap-1">
+            <span>✨</span><span>目的からすぐ開く（タップで移動します）</span>
+          </span>
+          <span class="font-en text-[10px] font-bold text-stone-400 tracking-wider uppercase">QUICK ACCESS</span>
+        </div>
+
+        <!-- 2列×3段のリッチなミニアプリカード -->
+        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-2.5">
+          
+          <!-- ① VANTRIP ショートカット -->
+          <a href="#app-vantrip" class="studio-card bg-white hover:bg-emerald-50/40 p-2.5 rounded-2xl border border-[#e5dacb] shadow-2xs flex items-center gap-2.5">
+            <img src="https://vantrip-gamma.vercel.app/icon.png" alt="VANTRIP" class="w-11 h-11 ios-app-icon object-cover shrink-0 bg-[#2b4c2b]">
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-bold text-emerald-800 bg-emerald-100/80 px-1.5 py-0.2 rounded-full inline-block">車中泊しおり</span>
+              <div class="font-en font-extrabold text-xs text-[#2c2520] truncate mt-0.5">VANTRIP</div>
+              <span class="text-[10px] text-stone-500 block truncate">道の駅・温泉も自動</span>
+            </div>
+          </a>
+
+          <!-- ② TRIPNOTE ショートカット -->
+          <a href="#app-tripnote" class="studio-card bg-white hover:bg-sky-50/40 p-2.5 rounded-2xl border border-[#e5dacb] shadow-2xs flex items-center gap-2.5">
+            <img src="https://tripnote-gold.vercel.app/icon.png" alt="TRIPNOTE" class="w-11 h-11 ios-app-icon object-cover shrink-0 bg-[#1e3a8a]">
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-bold text-sky-800 bg-sky-100/80 px-1.5 py-0.2 rounded-full inline-block">旅行しおり</span>
+              <div class="font-en font-extrabold text-xs text-[#2c2520] truncate mt-0.5">TRIPNOTE</div>
+              <span class="text-[10px] text-stone-500 block truncate">ホテル・新幹線・飛行機</span>
+            </div>
+          </a>
+
+          <!-- ③ TRIP LOGUE ショートカット -->
+          <a href="#app-triplogue" class="studio-card bg-white hover:bg-amber-50/40 p-2.5 rounded-2xl border border-[#e5dacb] shadow-2xs flex items-center gap-2.5">
+            <img src="https://trip-logue.vercel.app/icon.png" alt="TRIP LOGUE" class="w-11 h-11 ios-app-icon object-cover shrink-0 bg-[#2c221e]">
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-bold text-amber-900 bg-amber-100/80 px-1.5 py-0.2 rounded-full inline-block">旅のアルバム</span>
+              <div class="font-en font-extrabold text-xs text-[#2c2520] truncate mt-0.5">TRIP LOGUE</div>
+              <span class="text-[10px] text-stone-500 block truncate">写真と動画で旅行記に</span>
+            </div>
+          </a>
+
+          <!-- ④ CLIP NOTE ショートカット -->
+          <a href="#app-clipnote" class="studio-card bg-white hover:bg-orange-50/40 p-2.5 rounded-2xl border border-[#e5dacb] shadow-2xs flex items-center gap-2.5">
+            <img src="https://clip-note-hazel.vercel.app/icon.png" alt="CLIP NOTE" class="w-11 h-11 ios-app-icon object-cover shrink-0 bg-[#8c5a3c]" onerror="this.onerror=null; this.src='https://trip-logue.vercel.app/icon.png';">
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-bold text-orange-900 bg-orange-100/80 px-1.5 py-0.2 rounded-full inline-block">日常・趣味ログ</span>
+              <div class="font-en font-extrabold text-xs text-[#2c2520] truncate mt-0.5">CLIP NOTE</div>
+              <span class="text-[10px] text-stone-500 block truncate">カフェ・育児・推し活</span>
+            </div>
+          </a>
+
+          <!-- ⑤ 公式note 体験記・DIY -->
+          <a href="#section-note" class="studio-card bg-white hover:bg-teal-50/40 p-2.5 rounded-2xl border border-[#e5dacb] shadow-2xs flex items-center gap-2.5">
+            <div class="w-11 h-11 ios-app-icon bg-gradient-to-br from-[#2cb696] to-[#1e876e] text-white flex items-center justify-center text-xl shrink-0">
+              📝
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-bold text-teal-900 bg-teal-100/80 px-1.5 py-0.2 rounded-full inline-block">リアル体験記</span>
+              <div class="font-bold text-xs text-[#2c2520] truncate mt-0.5">公式 note</div>
+              <span class="text-[10px] text-stone-500 block truncate">車中泊レポ・DIY記事</span>
+            </div>
+          </a>
+
+          <!-- ⑥ 絵本ころまる＆スタンプ -->
+          <a href="#section-koromaru" class="studio-card bg-white hover:bg-rose-50/40 p-2.5 rounded-2xl border border-[#e5dacb] shadow-2xs flex items-center gap-2.5">
+            <div class="w-11 h-11 ios-app-icon bg-gradient-to-br from-[#d97757] to-[#b45339] text-white flex items-center justify-center text-xl shrink-0">
+              🐶
+            </div>
+            <div class="min-w-0 flex-1">
+              <span class="text-[9px] font-bold text-rose-900 bg-rose-100/80 px-1.5 py-0.2 rounded-full inline-block">絵本・スタンプ</span>
+              <div class="font-bold text-xs text-[#2c2520] truncate mt-0.5">絵本『ころまる』</div>
+              <span class="text-[10px] text-stone-500 block truncate">公式サイト＆LINEスタンプ</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 🚐 3. オリジナルWebアプリ紹介エリア（4大メインツール） -->
+    <!-- ========================================== -->
+    <section id="section-apps" class="space-y-6 scroll-mt-16">
+      <div class="border-b border-[#e2d6c5] pb-2.5 flex items-end justify-between">
+        <div>
+          <span class="font-en text-[10px] font-extrabold tracking-[0.2em] text-[#385a43] uppercase block">ORIGINAL WEB APPS</span>
+          <h2 class="font-serif-jp text-lg sm:text-xl font-bold text-[#2c2520]">お出かけ＆思い出作りのWebアプリ</h2>
+        </div>
+        <span class="text-[11px] text-stone-500 font-medium">すべてブラウザですぐ使えます</span>
+      </div>
+
+      <!-- 🟢 アプリ①：VANTRIP（車中泊しおり＆プランナー） -->
+      <article id="app-vantrip" class="studio-card bg-white rounded-3xl border-2 border-[#2b4c2b]/20 shadow-sm overflow-hidden scroll-mt-16">
+        <div class="grid grid-cols-1 md:grid-cols-12">
+          <!-- ビジュアルバナー -->
+          <a href="https://vantrip-gamma.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="md:col-span-5 bg-[#2b4c2b] relative overflow-hidden aspect-[16/9] md:aspect-auto flex items-center justify-center group">
+            <img src="https://vantrip-gamma.vercel.app/vantrip-ogp.png" alt="VANTRIP 車中泊スマートしおり" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </a>
+
+          <!-- 詳細＆アクションボタン -->
+          <div class="md:col-span-7 p-5 sm:p-6 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-3">
+                <img src="https://vantrip-gamma.vercel.app/icon.png" alt="VANTRIPアイコン" class="w-12 h-12 ios-app-icon object-cover shrink-0">
+                <div>
+                  <span class="text-[10px] font-bold text-[#2b4c2b] bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">車中泊・バンライフ専用</span>
+                  <h3 class="font-en text-lg sm:text-xl font-black text-[#1f2923] tracking-tight mt-0.5">VANTRIP <span class="text-xs font-normal text-stone-500 font-sans">（ヴァントリップ）</span></h3>
+                </div>
+              </div>
+
+              <p class="text-xs sm:text-sm font-bold text-[#2b4c2b] leading-snug pt-0.5">
+                「どこで寝る？お風呂は？ルートは？」車中泊の面倒な下調べがこれ1つで完結！
+              </p>
+              <p class="text-xs text-stone-600 leading-relaxed">
+                出発地と行きたい方面を入れるだけで、道の駅や公認RVパーク、日帰り温泉、ご当地グルメ、高速代・ガソリン代の目安まで繋がった「たびのしおり」をAIが自動作成。旅先での急な雨や時間遅れのリスケもワンタップで調整できます。
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <!-- メインCTAボタン -->
+              <a href="https://vantrip-gamma.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-[#2b4c2b] via-[#3b663b] to-[#2b4c2b] hover:opacity-95 active:scale-[0.99] text-white font-black py-3.5 px-4 rounded-2xl shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm transition">
+                <span>🚐</span><span>車中泊のプランを作ってみる</span><span>➔</span>
+              </a>
+              <!-- サブボタン（使い方note ＆ 完成見本） -->
+              <div class="grid grid-cols-2 gap-2">
+                <a href="https://note.com/yuitumu_app/n/n076dad46e9e8" target="_blank" rel="noopener noreferrer" class="bg-[#f4f7f4] hover:bg-emerald-50 text-[#2b4c2b] border border-emerald-200/80 font-bold py-2.5 px-3 rounded-xl text-[11px] sm:text-xs flex items-center justify-center gap-1 transition">
+                  <span>📖</span><span>詳しい使い方 (note)</span>
+                </a>
+                <a href="https://vantrip-ryo.vercel.app/?id=mamwqz&openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold py-2.5 px-3 rounded-xl text-[11px] sm:text-xs flex items-center justify-center gap-1 transition">
+                  <span>👀</span><span>完成見本を見る</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 🔵 アプリ②：TRIPNOTE（ホテル・新幹線・飛行機旅行しおり） -->
+      <article id="app-tripnote" class="studio-card bg-white rounded-3xl border-2 border-[#1e3a8a]/20 shadow-sm overflow-hidden scroll-mt-16">
+        <div class="grid grid-cols-1 md:grid-cols-12">
+          <!-- ビジュアルバナー -->
+          <a href="https://tripnote-gold.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="md:col-span-5 bg-[#1e3a8a] relative overflow-hidden aspect-[16/9] md:aspect-auto flex items-center justify-center group">
+            <img src="https://tripnote-gold.vercel.app/tripnote-ogp.png" alt="TRIPNOTE 旅行AIスマートしおり" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+          </a>
+
+          <!-- 詳細＆アクションボタン -->
+          <div class="md:col-span-7 p-5 sm:p-6 flex flex-col justify-between space-y-4">
+            <div class="space-y-2.5">
+              <div class="flex items-center gap-3">
+                <img src="https://tripnote-gold.vercel.app/icon.png" alt="TRIPNOTEアイコン" class="w-12 h-12 ios-app-icon object-cover shrink-0">
+                <div>
+                  <span class="text-[10px] font-bold text-[#1e3a8a] bg-sky-50 border border-sky-200 px-2.5 py-0.5 rounded-full">ホテル泊・新幹線・飛行機・レンタカー</span>
+                  <h3 class="font-en text-lg sm:text-xl font-black text-slate-900 tracking-tight mt-0.5">TRIPNOTE <span class="text-xs font-normal text-stone-500 font-sans">（トリップノート）</span></h3>
+                </div>
+              </div>
+
+              <p class="text-xs sm:text-sm font-bold text-[#1e3a8a] leading-snug pt-0.5">
+                ホテル泊や新幹線・飛行機でのお出かけに！家族や友人とシェアできるスマートしおり
+              </p>
+              <p class="text-xs text-stone-600 leading-relaxed">
+                移動手段（車・レンタカー・電車・飛行機）に合わせて無理のない観光タイムラインと持ち物チェックリストを自動設計。完成したしおりは専用URLで家族や友人のスマホへ簡単に共有できます。
+              </p>
+            </div>
+
+            <div class="space-y-2 pt-1">
+              <a href="https://tripnote-gold.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-[#1e3a8a] via-[#0284c7] to-[#1e3a8a] hover:opacity-95 active:scale-[0.99] text-white font-black py-3.5 px-4 rounded-2xl shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm transition">
+                <span>✈️</span><span>旅行のしおりを作ってみる</span><span>➔</span>
+              </a>
+              <div class="grid grid-cols-2 gap-2">
+                <a href="https://note.com/yuitumu_app/n/n076dad46e9e8" target="_blank" rel="noopener noreferrer" class="bg-sky-50/70 hover:bg-sky-100/70 text-[#1e3a8a] border border-sky-200/80 font-bold py-2.5 px-3 rounded-xl text-[11px] sm:text-xs flex items-center justify-center gap-1 transition">
+                  <span>📖</span><span>詳しい使い方 (note)</span>
+                </a>
+                <a href="https://tripnote-gold.vercel.app/?id=h640c1&openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="bg-stone-100 hover:bg-stone-200 text-stone-700 font-bold py-2.5 px-3 rounded-xl text-[11px] sm:text-xs flex items-center justify-center gap-1 transition">
+                  <span>👀</span><span>完成見本を見る</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- 🟤 アプリ③ ＆ ④：スクラップブック＆スライドショー姉妹アプリ（2列カード） -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+        <!-- ③ TRIP LOGUE -->
+        <article id="app-triplogue" class="studio-card bg-white rounded-3xl border-2 border-[#8c5a3c]/25 shadow-sm p-5 sm:p-6 flex flex-col justify-between space-y-4 scroll-mt-16">
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <img src="https://trip-logue.vercel.app/icon.png" alt="TRIP LOGUEアイコン" class="w-13 h-13 ios-app-icon object-cover shrink-0 bg-[#2c221e]" style="width: 52px; height: 52px;">
+              <div>
+                <span class="text-[10px] font-bold text-[#8c5a3c] bg-amber-50 border border-amber-200 px-2 py-0.5 rounded-full">旅と車中泊のアルバム作成</span>
+                <h3 class="font-en text-lg font-black text-[#2c221e] tracking-tight mt-0.5">TRIP LOGUE</h3>
+              </div>
+            </div>
+
+            <!-- プレビュービジュアル（triplogue-banner.jpg があれば表示、無ければおしゃれなチェキ風プレビュー） -->
+            <a href="https://trip-logue.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="block w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[#e5dacb] bg-[#f3ece2] relative group">
+              <img src="triplogue-banner.jpg" alt="TRIP LOGUE プレビュー" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+              <div class="hidden w-full h-full p-4 flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#f1e6d6] via-[#faf6f0] to-[#e6dfd1]">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="bg-white p-1.5 rounded shadow-xs text-sm rotate-[-4deg] border border-stone-200">📸 旅の写真</span>
+                  <span class="bg-white p-1.5 rounded shadow-xs text-sm rotate-[3deg] border border-stone-200">🎬 10秒動画</span>
+                  <span class="bg-white p-1.5 rounded shadow-xs text-sm rotate-[-2deg] border border-stone-200">🗺️ ルート</span>
+                </div>
+                <span class="font-serif-jp text-xs font-bold text-[#2c221e]">全15テーマの雑誌風スクラップ＆動画に✨</span>
+              </div>
+            </a>
+
+            <p class="text-xs sm:text-sm font-bold text-[#5c3d28] leading-snug">
+              スマホに眠っている旅の写真や10秒動画が、雑誌のようなスクラップブック＆スライドショーに！
+            </p>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              旅のしおりや簡単なメモからAIで文章を自動構成。写真をチェキ風に並べて高画質PNG画像として保存したり、音楽付きのスライドショー動画として再生できます。
+            </p>
+          </div>
+
+          <div class="space-y-2 pt-1">
+            <a href="https://trip-logue.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-[#2c221e] via-[#4a3730] to-[#2c221e] hover:opacity-95 active:scale-[0.99] text-[#f5efe6] font-black py-3.5 px-4 rounded-2xl shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm transition">
+              <span>📖</span><span>旅のスクラップブックを作る</span><span>➔</span>
+            </a>
+            <p class="text-[11px] text-center text-[#8c5a3c] font-bold bg-amber-50/70 py-1.5 px-2 rounded-xl border border-amber-200/60">
+              👀 アプリ内の「サンプルを見る」ボタンで完成見本をお試しできます
+            </p>
+          </div>
+        </article>
+
+        <!-- ④ CLIP NOTE -->
+        <article id="app-clipnote" class="studio-card bg-white rounded-3xl border-2 border-[#b45309]/25 shadow-sm p-5 sm:p-6 flex flex-col justify-between space-y-4 scroll-mt-16">
+          <div class="space-y-3">
+            <div class="flex items-center gap-3">
+              <img src="https://clip-note-hazel.vercel.app/icon.png" alt="CLIP NOTEアイコン" class="w-13 h-13 ios-app-icon object-cover shrink-0 bg-[#8c5a3c]" style="width: 52px; height: 52px;" onerror="this.onerror=null; this.src='https://trip-logue.vercel.app/icon.png';">
+              <div>
+                <span class="text-[10px] font-bold text-amber-900 bg-orange-50 border border-orange-200 px-2 py-0.5 rounded-full">日常・趣味・行事のスクラップ</span>
+                <h3 class="font-en text-lg font-black text-[#2c221e] tracking-tight mt-0.5">CLIP NOTE</h3>
+              </div>
+            </div>
+
+            <!-- プレビュービジュアル -->
+            <a href="https://clip-note-hazel.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="block w-full aspect-[16/9] rounded-2xl overflow-hidden border border-[#e5dacb] bg-[#faf3eb] relative group">
+              <img src="clipnote-banner.jpg" alt="CLIP NOTE プレビュー" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+              <div class="hidden w-full h-full p-4 flex flex-col items-center justify-center text-center bg-gradient-to-br from-[#fff5f7] via-[#faf6f0] to-[#fefce8]">
+                <div class="flex flex-wrap justify-center gap-1.5 mb-1.5">
+                  <span class="bg-white px-2 py-1 rounded-full shadow-2xs text-[11px] font-bold text-stone-700 border border-stone-200">☕ カフェ巡り</span>
+                  <span class="bg-white px-2 py-1 rounded-full shadow-2xs text-[11px] font-bold text-stone-700 border border-stone-200">👶 子ども行事</span>
+                  <span class="bg-white px-2 py-1 rounded-full shadow-2xs text-[11px] font-bold text-stone-700 border border-stone-200">📚 読書・推し活</span>
+                </div>
+                <span class="font-serif-jp text-xs font-bold text-[#4a2531]">星評価バッジや9つのジャンル別テンプレ搭載✨</span>
+              </div>
+            </a>
+
+            <p class="text-xs sm:text-sm font-bold text-[#7c3a19] leading-snug">
+              カフェ巡り・子どもの行事・読書・推し活・ペット記録など、日常の「好き」を1冊のノートに！
+            </p>
+            <p class="text-xs text-stone-600 leading-relaxed">
+              9種類のジャンルを選ぶだけで、見出しや実用スタンプ（ベストメニュー・成長ハイライト等）が自動最適化。「★5」や「👑BEST」などの評価バッジも付けられます。
+            </p>
+          </div>
+
+          <div class="space-y-2 pt-1">
+            <a href="https://clip-note-hazel.vercel.app/?openExternalBrowser=1" target="_blank" rel="noopener noreferrer" class="w-full bg-gradient-to-r from-[#8c5a3c] via-[#a86c49] to-[#8c5a3c] hover:opacity-95 active:scale-[0.99] text-white font-black py-3.5 px-4 rounded-2xl shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm transition">
+              <span>📎</span><span>日常・趣味のノートを作る</span><span>➔</span>
+            </a>
+            <p class="text-[11px] text-center text-[#8c5a3c] font-bold bg-orange-50/70 py-1.5 px-2 rounded-xl border border-orange-200/60">
+              👀 アプリ内の「サンプルを見る」ボタンで完成見本をお試しできます
+            </p>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 📝 4. 公式noteエリア（大元プロフィールカード ＋ 絵本のような記事カード） -->
+    <!-- ========================================== -->
+    <section id="section-note" class="space-y-4 scroll-mt-16">
+      <div class="border-b border-[#e2d6c5] pb-2.5 flex items-end justify-between">
+        <div>
+          <span class="font-en text-[10px] font-extrabold tracking-[0.2em] text-[#2cb696] uppercase block">OFFICIAL NOTE & STORIES</span>
+          <h2 class="font-serif-jp text-lg sm:text-xl font-bold text-[#2c2520]">車中泊のリアル体験記・DIY・使い方ガイド</h2>
+        </div>
+      </div>
+
+      <!-- ① 大元の公式noteプロフィールへのメインカード -->
+      <a href="https://note.com/yuitumu_app" target="_blank" rel="noopener noreferrer" class="studio-card block bg-gradient-to-r from-[#249f83] via-[#2cb696] to-[#208c73] text-white rounded-3xl p-5 sm:p-6 shadow-md border border-teal-300/40">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3.5">
+            <div class="w-13 h-13 rounded-2xl bg-white/20 backdrop-blur-xs border border-white/30 flex items-center justify-center text-2xl shrink-0 shadow-inner" style="width: 52px; height: 52px;">
+              📝
+            </div>
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <span class="text-[10px] font-black bg-white text-[#1e876e] px-2.5 py-0.5 rounded-full">公式 note トップ</span>
+                <span class="text-[11px] text-teal-100 font-bold">ゆいつむ工房｜週末は家族でゆるっと車中泊</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-black text-white leading-snug">
+                すべての記事一覧・フォローはこちら
+              </h3>
+              <p class="text-xs text-teal-50/90 leading-relaxed">
+                子連れ車中泊のリアルな旅費・失敗談から、夫婦で作った車内ベッドキットDIY、各アプリの活用術まで発信しています。
+              </p>
+            </div>
+          </div>
+          <div class="bg-white text-[#1e876e] font-black text-xs px-4 py-2.5 rounded-full text-center shrink-0 shadow-xs">
+            note一覧を開く ↗
+          </div>
+        </div>
+      </a>
+
+      <!-- ② ピックアップ記事：絵本のように並んだ小さなカード3選 -->
+      <div class="space-y-2 pt-1">
+        <span class="text-xs font-bold text-[#6e5644] px-1 block">📚 人気のピックアップ記事（タップで直接読めます）</span>
+
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
+          
+          <!-- 記事カード①：那須・宇都宮 2泊3日車中泊体験記 -->
+          <a href="https://note.com/yuitumu_app/n/n70df0aa04ba6" target="_blank" rel="noopener noreferrer" class="studio-card bg-white rounded-2xl border border-[#e5dacb] overflow-hidden shadow-2xs flex flex-col justify-between group">
+            <div>
+              <div class="w-full aspect-[4/3] bg-gradient-to-br from-[#fef3c7] via-[#ffedd5] to-[#dcfce7] relative overflow-hidden flex flex-col items-center justify-center p-4 text-center border-b border-[#f0e6d8]">
+                <img src="note-utsunomiya.jpg" alt="那須・宇都宮 車中泊体験記" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none';">
+                <span class="bg-amber-600 text-white text-[9px] font-black px-2.5 py-0.5 rounded-full mb-1.5 shadow-2xs">リアル車中泊体験記</span>
+                <span class="text-3xl mb-1 group-hover:scale-110 transition">🚐🥟💎</span>
+                <span class="font-serif-jp text-xs font-bold text-amber-950">那須・宇都宮 2泊3日<br>家族4人で総額3.3万円！</span>
+              </div>
+              <div class="p-3.5 space-y-1.5">
+                <h4 class="font-bold text-xs sm:text-sm text-[#2c2520] leading-snug line-clamp-2">
+                  「車中泊って冒険だ！！」家族4人で那須・宇都宮へ、大満足の2泊3日車中泊旅🚐✨
+                </h4>
+                <p class="text-[11px] text-stone-500 leading-relaxed line-clamp-2">
+                  道の駅みぶ・ろまんちっく村での仮眠や絶品みんみん餃子、大谷資料館、急遽リスケした八幡山公園まで全公開！
+                </p>
+              </div>
+            </div>
+            <div class="px-3.5 pb-3 pt-1 flex items-center justify-between text-[11px] font-black text-[#2cb696]">
+              <span>📖 体験記を読む</span><span>➔</span>
+            </div>
+          </a>
+
+          <!-- 記事カード②：VANTRIP 完全ガイド -->
+          <a href="https://note.com/yuitumu_app/n/n076dad46e9e8" target="_blank" rel="noopener noreferrer" class="studio-card bg-white rounded-2xl border border-[#e5dacb] overflow-hidden shadow-2xs flex flex-col justify-between group">
+            <div>
+              <div class="w-full aspect-[4/3] bg-gradient-to-br from-[#dcfce7] via-[#e0f2fe] to-[#fef9c3] relative overflow-hidden flex flex-col items-center justify-center p-4 text-center border-b border-[#f0e6d8]">
+                <img src="note-vantrip.jpg" alt="VANTRIP完全ガイド" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none';">
+                <span class="bg-[#2b4c2b] text-white text-[9px] font-black px-2.5 py-0.5 rounded-full mb-1.5 shadow-2xs">アプリ使い方図鑑</span>
+                <span class="text-3xl mb-1 group-hover:scale-110 transition">🗺️♨️🤖</span>
+                <span class="font-serif-jp text-xs font-bold text-emerald-950">出発地を入れるだけ！<br>『VANTRIP』完全ガイド</span>
+              </div>
+              <div class="p-3.5 space-y-1.5">
+                <h4 class="font-bold text-xs sm:text-sm text-[#2c2520] leading-snug line-clamp-2">
+                  最高の車中泊をプランニング！AIが全自動でしおりを作る『VANTRIP』の完全ガイド
+                </h4>
+                <p class="text-[11px] text-stone-500 leading-relaxed line-clamp-2">
+                  ワガママ自由入力の裏技から、前夜発設定、旅先での雨天リスケ機能の使い方まで画面付きで詳しく解説。
+                </p>
+              </div>
+            </div>
+            <div class="px-3.5 pb-3 pt-1 flex items-center justify-between text-[11px] font-black text-[#2cb696]">
+              <span>📖 ガイドを読む</span><span>➔</span>
+            </div>
+          </a>
+
+          <!-- 記事カード③：自己紹介＆車内ベッドDIYストーリー -->
+          <a href="https://note.com/yuitumu_app" target="_blank" rel="noopener noreferrer" id="noteIntroCardLink" class="studio-card bg-white rounded-2xl border border-[#e5dacb] overflow-hidden shadow-2xs flex flex-col justify-between group">
+            <div>
+              <div class="w-full aspect-[4/3] bg-gradient-to-br from-[#fce7f3] via-[#fef3c7] to-[#e0e7ff] relative overflow-hidden flex flex-col items-center justify-center p-4 text-center border-b border-[#f0e6d8]">
+                <img src="note-intro.jpg" alt="自己紹介・車中泊DIY" class="absolute inset-0 w-full h-full object-cover" onerror="this.style.display='none';">
+                <span class="bg-rose-600 text-white text-[9px] font-black px-2.5 py-0.5 rounded-full mb-1.5 shadow-2xs">はじめまして＆DIY</span>
+                <span class="text-3xl mb-1 group-hover:scale-110 transition">🚗🔨👕</span>
+                <span class="font-serif-jp text-xs font-bold text-rose-950">お揃いTシャツ・車内ベッド<br>アプリまで自作した話</span>
+              </div>
+              <div class="p-3.5 space-y-1.5">
+                <h4 class="font-bold text-xs sm:text-sm text-[#2c2520] leading-snug line-clamp-2">
+                  はじめまして！車中泊にドハマりして、『お揃いTシャツ』や『便利アプリ』まで自作しちゃった主婦です🚗✨
+                </h4>
+                <p class="text-[11px] text-stone-500 leading-relaxed line-clamp-2">
+                  車中泊にハマったきっかけや、ホームセンターの木材で作ったフルフラットベッド、アプリ開発の裏話。
+                </p>
+              </div>
+            </div>
+            <div class="px-3.5 pb-3 pt-1 flex items-center justify-between text-[11px] font-black text-[#2cb696]">
+              <span>📖 記事を読む</span><span>➔</span>
+            </div>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 🐶 5. 創作絵本『ころまる』＆ LINEスタンプ特設エリア -->
+    <!-- ========================================== -->
+    <section id="section-koromaru" class="bg-gradient-to-br from-[#fdf6ec] via-[#fffaf3] to-[#f7ede0] rounded-3xl p-5 sm:p-7 border-2 border-[#ebd9c3] shadow-sm space-y-5 scroll-mt-16">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#ebd9c3] pb-3.5">
+        <div class="space-y-1">
+          <span class="text-[10px] font-bold bg-[#d97757] text-white px-2.5 py-0.5 rounded-full inline-block">PICTURE BOOK & LINE STAMP</span>
+          <h2 class="font-serif-jp text-lg sm:text-xl font-bold text-[#3d2c22] flex items-center gap-2">
+            <span>🐶</span><span>創作絵本『ころまる』シリーズ</span>
+          </h2>
+        </div>
+        <a href="https://www.instagram.com/yuitumkoubou/" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-[#9c5a3c] hover:underline flex items-center gap-1">
+          <span>📷 絵本Instagram (@yuitumkoubou)</span><span>↗</span>
+        </a>
+      </div>
+
+      <p class="text-xs sm:text-sm text-[#4a372c] leading-relaxed font-medium">
+        「亡くなった愛犬のミニチュアダックスフンドと、子どもたちを絵本の世界で会わせてあげたい」——そんな家族の想いから生まれたオリジナル絵本シリーズです。日常で使えるほっこり可愛いLINEスタンプも販売しています🐾
+      </p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        
+        <!-- ① ころまる公式サイト（Canva）カード -->
+        <a href="https://yuitumukoubou.my.canva.site/" target="_blank" rel="noopener noreferrer" class="studio-card bg-white rounded-2xl p-4 border border-[#e6d3bc] shadow-2xs flex flex-col justify-between space-y-3">
+          <div class="flex items-start gap-3.5">
+            <div class="w-16 h-16 rounded-2xl bg-[#f7ede0] border border-[#e6d3bc] overflow-hidden shrink-0 flex items-center justify-center">
+              <img src="koromaru-book.jpg" alt="絵本ころまる" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+              <span class="hidden text-3xl">📕🐶</span>
+            </div>
+            <div class="space-y-1 min-w-0 flex-1">
+              <span class="text-[10px] font-bold text-amber-900 bg-amber-100 px-2 py-0.5 rounded-full">絵本公式サイト</span>
+              <h3 class="font-serif-jp font-bold text-sm sm:text-base text-[#2c2520]">絵本『ころまる』公式ページ</h3>
+              <p class="text-[11px] text-stone-500 leading-relaxed">
+                ころまるの物語やキャラクター紹介、絵本の世界観をご覧いただけます。
+              </p>
+            </div>
+          </div>
+          <div class="w-full bg-[#b0724e] hover:bg-[#965d3d] text-white font-black text-xs py-2.5 px-4 rounded-xl text-center transition shadow-2xs">
+            📕 絵本『ころまる』公式サイトを見る ↗
+          </div>
+        </a>
+
+        <!-- ② ころまる LINEスタンプ販売ページ カード -->
+        <a href="https://store.line.me/stickershop/author/5929090/ja" target="_blank" rel="noopener noreferrer" class="studio-card bg-white rounded-2xl p-4 border border-[#e6d3bc] shadow-2xs flex flex-col justify-between space-y-3">
+          <div class="flex items-start gap-3.5">
+            <div class="w-16 h-16 rounded-2xl bg-[#eefaf2] border border-emerald-200 overflow-hidden shrink-0 flex items-center justify-center">
+              <img src="koromaru-stamp.jpg" alt="ころまるLINEスタンプ" class="w-full h-full object-cover" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+              <span class="hidden text-3xl">💬🐾</span>
+            </div>
+            <div class="space-y-1 min-w-0 flex-1">
+              <span class="text-[10px] font-bold text-emerald-900 bg-emerald-100 px-2 py-0.5 rounded-full">LINE STORE</span>
+              <h3 class="font-serif-jp font-bold text-sm sm:text-base text-[#2c2520]">ころまる オリジナルLINEスタンプ</h3>
+              <p class="text-[11px] text-stone-500 leading-relaxed">
+                家族や友だちとの毎日のトークがほっこり和む、ころまるのスタンプ一覧です。
+              </p>
+            </div>
+          </div>
+          <div class="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-black text-xs py-2.5 px-4 rounded-xl text-center transition shadow-2xs">
+            💬 LINEスタンプ一覧を見る ↗
+          </div>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 🚧 6. 現在工事中（Coming Soon）新アプリ予告エリア -->
+    <!-- ========================================== -->
+    <section id="section-comingsoon" class="bg-white rounded-3xl p-5 sm:p-6 border border-[#e5dacb] shadow-2xs">
+      <div class="flex flex-col sm:flex-row items-center gap-5">
+        
+        <!-- いただいた「現在工事中（ころまる）」画像（GitHubに koromaru-under-construction.png という名前でアップするとそのまま表示されます！） -->
+        <div class="w-40 h-40 sm:w-44 sm:h-44 rounded-2xl bg-[#faf7f2] border border-[#e5dacb] overflow-hidden shrink-0 flex items-center justify-center p-2 shadow-inner">
+          <img src="koromaru-under-construction.png" alt="現在工事中 もうちょっと待っててね" class="w-full h-full object-contain" onerror="this.style.display='none'; this.nextElementSibling.classList.remove('hidden');">
+          <!-- 画像アップロード前のダミー表示 -->
+          <div class="hidden w-full h-full flex flex-col items-center justify-center text-center p-2 bg-amber-50/60 rounded-xl border border-dashed border-amber-300">
+            <span class="bg-amber-800 text-amber-50 text-[10px] font-black px-2.5 py-0.5 rounded-md mb-1">現在工事中</span>
+            <span class="text-4xl my-1">🐶⛑️</span>
+            <span class="text-[10px] font-bold text-amber-950">もうちょっと待っててね</span>
+            <span class="text-[8px] text-stone-400 mt-1">koromaru-under-construction.png</span>
+          </div>
+        </div>
+
+        <div class="flex-1 space-y-3 text-center sm:text-left">
+          <div>
+            <span class="font-en text-[10px] font-extrabold tracking-widest text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-full uppercase">COMING SOON</span>
+            <h3 class="font-serif-jp text-base sm:text-lg font-bold text-[#2c2520] mt-1">
+              新しいお出かけ＆暮らしのWebアプリも開発中です！
+            </h3>
+            <p class="text-xs text-stone-500 mt-0.5">
+              ころまる親方がただいま鋭意工事中🐾 公開まで楽しみにお待ちください！
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-left">
+            <div class="bg-[#faf7f2] p-2.5 rounded-xl border border-[#e8dfd3]">
+              <div class="text-xs font-black text-[#2c2520]">🏕️ CAMPTIPS</div>
+              <p class="text-[10px] text-stone-500 mt-0.5">初心者でも迷わないキャンプ準備＆知恵袋ツール</p>
+            </div>
+            <div class="bg-[#faf7f2] p-2.5 rounded-xl border border-[#e8dfd3]">
+              <div class="text-xs font-black text-[#2c2520]">🐾 PAWTRIP</div>
+              <p class="text-[10px] text-stone-500 mt-0.5">愛犬・ペットと一緒に行けるお出かけプランナー</p>
+            </div>
+            <div class="bg-[#faf7f2] p-2.5 rounded-xl border border-[#e8dfd3]">
+              <div class="text-xs font-black text-[#2c2520]">🎒 SONAELOG</div>
+              <p class="text-[10px] text-stone-500 mt-0.5">車中泊ギアも活かせる家族の防災・備蓄管理ログ</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ========================================== -->
+    <!-- 📣 7. SNSフォロー ＆ 友人に教える ＆ お問い合わせ -->
+    <!-- ========================================== -->
+    <section class="space-y-4">
+      <div class="bg-[#2c2520] text-[#faf7f2] rounded-3xl p-5 sm:p-6 shadow-md space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div>
+            <span class="font-en text-[10px] text-amber-300 font-bold tracking-widest uppercase block">FOLLOW & SHARE</span>
+            <h3 class="font-serif-jp text-base sm:text-lg font-bold text-white">Instagramでも最新のお出かけ＆アプリ情報を発信中！</h3>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <a href="https://www.instagram.com/yuitumu.app/" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/15 border border-white/15 p-3.5 rounded-2xl flex items-center justify-between transition">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🚐</span>
+              <div>
+                <div class="text-xs font-black text-white">車中泊・旅行・アプリ公式</div>
+                <div class="text-[11px] text-amber-200 font-mono">@yuitumu.app</div>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-white bg-white/15 px-3 py-1 rounded-full">開く ↗</span>
+          </a>
+
+          <a href="https://www.instagram.com/yuitumkoubou/" target="_blank" rel="noopener noreferrer" class="bg-white/10 hover:bg-white/15 border border-white/15 p-3.5 rounded-2xl flex items-center justify-between transition">
+            <div class="flex items-center gap-3">
+              <span class="text-2xl">🐶</span>
+              <div>
+                <div class="text-xs font-black text-white">絵本『ころまる』・工房公式</div>
+                <div class="text-[11px] text-amber-200 font-mono">@yuitumkoubou</div>
+              </div>
+            </div>
+            <span class="text-xs font-bold text-white bg-white/15 px-3 py-1 rounded-full">開く ↗</span>
+          </a>
+        </div>
+
+        <!-- 家族・友人にこのサイトをシェアするボタン群 -->
+        <div class="pt-3 border-t border-white/15 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+          <span class="text-xs font-bold text-stone-200">🙌 家族や友人に「ゆいつむ工房」を教える</span>
+          <div class="grid grid-cols-3 gap-2 sm:w-80">
+            <button onclick="sharePortal('line')" class="bg-[#06C755] hover:opacity-95 active:scale-95 text-white font-black py-2 rounded-xl text-xs transition">LINEで送る</button>
+            <button onclick="sharePortal('x')" class="bg-black hover:bg-stone-800 active:scale-95 text-white font-black py-2 rounded-xl text-xs border border-white/20 transition">𝕏 でシェア</button>
+            <button onclick="sharePortal('copy')" class="bg-white/15 hover:bg-white/25 active:scale-95 text-white font-bold py-2 rounded-xl text-xs transition">URLコピー</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- お問い合わせフォーム -->
+      <div class="bg-white border border-[#e5dacb] rounded-2xl p-3.5 text-center shadow-2xs">
+        <a href="https://docs.google.com/forms/d/14v3SR0R1WU1H_NPZbFZezi2rUW4Tv-KSEQFPfgtH2MM/viewform" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-[#4a3b32] hover:text-[#385a43] hover:underline inline-flex items-center justify-center gap-1.5 w-full">
+          <span>📩</span><span>お問い合わせ・ご感想・お仕事のご相談はこちら（Googleフォーム）</span><span>↗</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="max-w-3xl mx-auto px-4 pt-8 pb-10 text-center text-[11px] text-stone-400 space-y-2">
+    <p class="font-serif-jp text-stone-500 font-bold">ゆいつむ工房 - Yuitumu Koubou</p>
+    <p class="font-en">© Yuitumu Koubou. All Rights Reserved.</p>
+  </footer>
+
+  <!-- 📱 iPhoneのホーム画面風「下部固定フローティング・ドックバー」 -->
+  <nav aria-label="クイックナビゲーション" class="fixed bottom-3 left-0 right-0 z-50 px-3 pointer-events-none">
+    <div class="max-w-md mx-auto bg-[#2c2520]/90 backdrop-blur-md text-[#faf7f2] rounded-2xl p-1.5 shadow-2xl border border-white/15 grid grid-cols-5 gap-1 pointer-events-auto">
+      <a href="#top" class="flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 active:scale-95 transition">
+        <span class="text-base leading-none">🏠</span>
+        <span class="text-[9px] font-bold mt-1 text-stone-200">トップ</span>
+      </a>
+      <a href="#section-apps" class="flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 active:scale-95 transition">
+        <span class="text-base leading-none">🚐</span>
+        <span class="text-[9px] font-bold mt-1 text-emerald-300">Webアプリ</span>
+      </a>
+      <a href="#section-note" class="flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 active:scale-95 transition">
+        <span class="text-base leading-none">📝</span>
+        <span class="text-[9px] font-bold mt-1 text-teal-300">体験記note</span>
+      </a>
+      <a href="#section-koromaru" class="flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 active:scale-95 transition">
+        <span class="text-base leading-none">🐶</span>
+        <span class="text-[9px] font-bold mt-1 text-amber-300">ころまる</span>
+      </a>
+      <a href="https://www.instagram.com/yuitumu.app/" target="_blank" rel="noopener noreferrer" class="flex flex-col items-center justify-center py-1.5 rounded-xl hover:bg-white/10 active:scale-95 transition">
+        <span class="text-base leading-none">📷</span>
+        <span class="text-[9px] font-bold mt-1 text-pink-300">インスタ</span>
+      </a>
+    </div>
+  </nav>
+
+  <script>
+    // アプリ内ブラウザ（Instagram / LINE等）検知
+    window.addEventListener('DOMContentLoaded', () => {
+      const ua = navigator.userAgent || '';
+      if (/Instagram|Line|FBAN|FBAV|Twitter/i.test(ua)) {
+        document.getElementById('inAppBrowserNotice')?.classList.remove('hidden');
+      }
+    });
+
+    let toastTimer = null;
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.innerHTML = msg;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => {
+        toast.classList.remove('show');
+      }, 3200);
+    }
+
+    function showAddToHomeGuide() {
+      showToast('📱 ブラウザの「共有(↑)」またはメニューから<br><span class="text-amber-300">【ホーム画面に追加】</span>を選ぶと、いつでも1タップで開けます✨');
+    }
+
+    function sharePortal(method) {
+      const url = window.location.origin + window.location.pathname;
+      const title = 'ゆいつむ工房｜車中泊・旅行しおりAIアプリ＆絵本スタジオ';
+      const text = '車中泊AIプランナー「VANTRIP」や旅行しおり「TRIPNOTE」、動くアルバム「TRIP LOGUE」など、ゆいつむ工房の便利ツール集はこちら🚐✨';
+
+      if (method === 'line') {
+        window.open(`https://line.me/R/msg/text/?${encodeURIComponent(title + '\n' + text + '\n' + url)}`, '_blank', 'noopener,noreferrer');
+      } else if (method === 'x') {
+        window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(text + '\n#ゆいつむ工房 #VANTRIP #車中泊')}&url=${encodeURIComponent(url)}`, '_blank', 'noopener,noreferrer');
+      } else if (method === 'copy') {
+        navigator.clipboard.writeText(url).then(() => {
+          showToast('✨ 公式サイトのURLをコピーしました！');
+        }).catch(() => {
+          prompt('以下のURLをコピーしてください:', url);
+        });
+      }
+    }
+  </script>
+</body>
+</html>
